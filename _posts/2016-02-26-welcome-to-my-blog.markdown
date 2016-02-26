@@ -2,7 +2,7 @@
 layout: post
 title:  "Welcome to my blog!"
 subtitle: "New blog is here"
-date:   2016-02-26 21:42:01
+date:   2016-02-26 21:42:01 +0100
 categories: [other]
 ---
 
