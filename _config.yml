@@ -9,8 +9,8 @@ url: "http://mkotas.cz" # the base hostname & protocol for your site
 
 author:
   fullname: Mariusz Kotas
-  github: marfusios
-  twitter: marfusios
+  # github: marfusios
+  # twitter: marfusios
   disqus: mariuszkotas
 
 google_analytics: 'UA-73751225-2'

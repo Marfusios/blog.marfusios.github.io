@@ -3,7 +3,7 @@ layout: default
 ---
 {% include category/title.html %}
 
-<ul class="list-posts w3-card-2">
+<ul class="list-posts w3-card-2 w3-animate-right">
     {% assign empty_category = true %}
     {% for post in site.posts %}
         {% if post.categories contains page.category %}

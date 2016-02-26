@@ -1,8 +1,8 @@
-- slug: design
-  name: Design
+- slug: dotnet
+  name: .NET
 
-- slug: tools
-  name: Tools
+- slug: architecture
+  name: Achitecture
 
-- slug: productivity
-  name: Productivity
+- slug: other
+  name: Other

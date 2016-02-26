@@ -1,0 +1,9 @@
+---
+layout: post
+title:  "Sample post"
+subtitle: "And!"
+date:   2016-03-02 23:56:45
+categories: [other]
+---
+
+Some looooong text
