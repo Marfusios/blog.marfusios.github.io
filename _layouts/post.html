@@ -1,12 +1,18 @@
 ---
 layout: default
 ---
-{% include post/title.html %}
-
-<div class="content">
-    {{ content }}
+<div class="w3-card-2">
+    {% include post/title.html %}
 </div>
 
-{% include post/about.html %}
+<div class="w3-card-2">
+    <div class="content">
+        {{ content }}
+    </div>
 
-{% include externals/disqus.html %}
+    {% include post/about.html %}
+</div>
+
+<div class="w3-card-2">
+    {% include externals/disqus.html %}
+</div>

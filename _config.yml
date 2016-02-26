@@ -1,7 +1,8 @@
 # Site settings
-title: Mariusz Kotas blog
+title: Mariusz Kotas
+subtitle: Software Craftsman notes 
 description: >
-  Software Craftsman notes
+  Personal blog by Mariusz Kotas - Software Craftsman notes
 
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://mkotas.cz" # the base hostname & protocol for your site

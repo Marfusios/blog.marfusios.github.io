@@ -3,7 +3,7 @@ layout: default
 ---
 {% include category/title.html %}
 
-<ul class="list-posts">
+<ul class="list-posts w3-card-2">
     {% assign empty_category = true %}
     {% for post in site.posts %}
         {% if post.categories contains page.category %}
@@ -19,7 +19,7 @@ layout: default
 
     {% if empty_category %}
         <li class="empty-post-list">
-            It seems that there are no articles on that category,
+            It seems that there are no articles in that category,
             please go back <a href="/">home</a> to see the full list of articles.
         </li>
     {% endif %}
