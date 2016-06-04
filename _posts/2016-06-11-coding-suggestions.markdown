@@ -21,4 +21,5 @@ Suggestions how to keep clean, maintainable code. Based on my experience, here t
 * **Polymorphisms** - Only one switch in the whole application (for one chunk of related classes), which will create individual polymorphic objects. The rest of the application will be working with abstraction (interface or abstract class). 
 * **Avoid static** - Try to avoid static elements (methods, classes, etc.). For example is fine to have static logger (but some internal part should be mockable - so it will be able to test). 
 * **TDD** - Test Driven Development - write the unit test first and then implementation. Red-Green-Refactor. Thanks to it we understand how we want to use specified code, we find the most intuitive interface and we write testable (good) code. TDD is hard and sometimes not fully necessary, in my opinion using it 30% of development time is just fine.
+* **Immutable** - Public API (methods, getters) should return only immutable types or IReadOnly collections or always valid types.
 
