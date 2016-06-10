@@ -2,7 +2,7 @@
 layout: post
 title:  "Coding suggestions"
 subtitle: "Just my thoughts about programming"
-date:   2016-06-10 05:33:33 +0100
+date:   2016-06-10 06:33:33 +0100
 categories: [architecture]
 ---
 
@@ -23,4 +23,3 @@ Suggestions how to keep clean, maintainable code. Based on my experience, here t
 * **TDD** - Test Driven Development - write the unit test first and then implementation. Red-Green-Refactor. Thanks to it we understand how we want to use specified code, we find the most intuitive interface and we write testable (good) code. TDD is hard and sometimes not fully necessary, in my opinion using it 30% of development time is just fine.
 * **Immutable** - Public API (methods, getters) should return only immutable types or IReadOnly collections or always valid types.
 * **Postel's law** - "Be conservative in what you return, be liberal in what you accept" - never ever return null value from method in public API (library). Rather use TryParse pattern or Maybe monad or NULL pattern.
-
