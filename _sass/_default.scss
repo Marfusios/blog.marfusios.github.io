@@ -11,6 +11,10 @@ body {
     margin: 40px 0px;
 }
 
+h2 {
+    margin-top: 0;
+}
+
 a {
     color: $cloudy;
     font-weight: bold;
@@ -266,7 +270,7 @@ strong {
     }
 
     .wrapper {
-        width: 80%;
+        width: 95%;
     }
 
     .navigation,
@@ -315,5 +319,13 @@ strong {
 
     .post-title__subtitle {
         font-size: 18px;
+    }
+
+    .w3-card-2 {
+        padding-top: 5px;
+    }
+
+    h2 {
+        margin-top: 10px;
     }
 }
