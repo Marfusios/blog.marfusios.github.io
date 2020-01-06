@@ -5,6 +5,12 @@ body {
     background-color: $white;
 }
 
+.content {
+    font-family: 'Inconsolata', Cambria, "Times New Roman", Times, serif;
+    line-height: 1.58;
+    letter-spacing: -0.009em;
+}
+
 .w3-card-2 {
     background-color: $dorian;
     padding: 40px 20px 1px;
@@ -19,11 +25,6 @@ a {
     color: $cloudy;
     font-weight: bold;
     text-decoration: none;
-}
-
-p {
-    font-size: 20px;
-    line-height: 32px;
 }
 
 img {
@@ -152,6 +153,7 @@ strong {
     font-weight: 400;
     font-size: 18px;
     color: $cloudy;
+    font-family: 'Inconsolata', Cambria, "Times New Roman", Times, serif;
 }
 
 .post-title {
@@ -164,6 +166,7 @@ strong {
 
 .post-title__subtitle {
     font-size: 20px;
+    margin-top: 10px;
 }
 
 /* =Post teasers */
@@ -252,12 +255,12 @@ strong {
 
 .about__devider {
     font-size: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     letter-spacing: 9.09px;
 }
 
 .about__text {
-    font-size: 18px;
+    font-size: 14px;
 }
 
 #disqus_thread {
