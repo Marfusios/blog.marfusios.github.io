@@ -6,7 +6,7 @@ date:   2020-02-13 18:33:33 +0100
 categories: [other]
 ---
 
-As a software freelancer/consultant, I don’t sell my time, but my experience, my knowledge, and quality delivered solutions.
+As a software freelancer/consultant, **I don’t sell my time**, but my experience, my knowledge, and quality delivered solutions.
 
 ![business card](https://miro.medium.com/max/1440/1*CHlys9fWs_pbuBmOvGPdRw.png)
 
