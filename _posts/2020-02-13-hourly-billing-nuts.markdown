@@ -2,7 +2,7 @@
 layout: post
 title:  "Hourly billing is nuts"
 subtitle: ""
-date:   2020-02-13 23:33:33 +0100
+date:   2020-02-13 18:33:33 +0100
 categories: [other]
 ---
 
