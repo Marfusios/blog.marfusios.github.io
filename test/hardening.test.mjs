@@ -156,6 +156,13 @@ test('every old post URL redirects with .html, .html/ and no extension', () => {
   }
 });
 
+test('CSP allows the Cloudflare Web Analytics beacon and no other script', () => {
+  const csp = /Content-Security-Policy: (.*)/.exec(read('src/static/_headers'))[1];
+  assert.match(csp, /script-src https:\/\/static\.cloudflareinsights\.com;/);
+  assert.match(csp, /connect-src 'self' https:\/\/cloudflareinsights\.com;/);
+  assert.doesNotMatch(csp, /unsafe-inline|unsafe-eval/);
+});
+
 test('headers do not use the obsolete interest-cohort feature', () => {
   assert.doesNotMatch(read('src/static/_headers'), /interest-cohort/);
 });
