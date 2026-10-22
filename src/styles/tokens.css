@@ -251,6 +251,7 @@ a:hover { color: var(--link-hover); border-bottom-color: var(--link-hover); }
   --footer-fg: var(--navy-100);
   --footer-strong: var(--paper);
   --year-stroke: var(--ink-500);
+  --focus-ring: var(--navy-800);      /* 15:1 on paper */
   color-scheme: light dark;
 }
 
@@ -276,6 +277,7 @@ a:hover { color: var(--link-hover); border-bottom-color: var(--link-hover); }
     --code-bg:       #07111F;
     --footer-bg:     #07111F;
     --year-stroke:   var(--navy-300);
+    --focus-ring: var(--gold-500);
   }
   ::selection { background: var(--gold-500); color: var(--navy-900); }
 }

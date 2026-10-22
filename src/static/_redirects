@@ -1,12 +1,16 @@
 # Old Jekyll URLs (2016-2026) -> new URLs. Keep these forever: links and search results point here.
 /other/2020/02/13/hourly-billing-nuts.html          /hourly-billing-nuts/   301
 /other/2020/02/13/hourly-billing-nuts.html/         /hourly-billing-nuts/   301
+/other/2020/02/13/hourly-billing-nuts               /hourly-billing-nuts/   301
 /architecture/2016/06/10/coding-suggestions.html    /coding-suggestions/    301
 /architecture/2016/06/10/coding-suggestions.html/   /coding-suggestions/    301
+/architecture/2016/06/10/coding-suggestions         /coding-suggestions/    301
 /dotnet/2016/06/04/style-guidelines.html            /style-guidelines/      301
 /dotnet/2016/06/04/style-guidelines.html/           /style-guidelines/      301
+/dotnet/2016/06/04/style-guidelines                 /style-guidelines/      301
 /other/2016/03/01/welcome-to-my-blog.html           /welcome-to-my-blog/    301
 /other/2016/03/01/welcome-to-my-blog.html/          /welcome-to-my-blog/    301
+/other/2016/03/01/welcome-to-my-blog                /welcome-to-my-blog/    301
 /categories/dotnet/                                 /topics/dotnet/         301
 /categories/dotnet                                  /topics/dotnet/         301
 /categories/architecture/                           /topics/architecture/   301
