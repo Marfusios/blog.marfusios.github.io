@@ -50,6 +50,11 @@ Remove `draft: true`, commit, and push to `master`. Cloudflare Workers Builds ru
 canonical URLs or social images, redirects pointing at missing pages, invalid feed or
 sitemap XML, or a draft that leaked into the output.
 
+Cloudflare setup (Workers & Pages → `marfusios-blog` → Settings → Builds): Git repository
+`Marfusios/blog.marfusios.github.io`, production branch `master`, build command
+`npm run build`, deploy command `npx wrangler deploy`, root directory `/`. Node version comes
+from `.node-version`. Custom domain: `blog.mkotas.cz` (Settings → Domains & Routes).
+
 `npm run preview` serves `dist/` through Wrangler, which applies `_redirects` and
 `_headers` like production (needs Node 22+).
 
