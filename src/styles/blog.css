@@ -264,6 +264,7 @@ a.chip:hover { border-color: var(--accent-line); color: var(--fg); }
   margin: 0; padding: 22px 22px 20px; overflow-x: auto;
   font-size: 13.5px; line-height: 1.65; color: var(--code-fg); tab-size: 2;
 }
+.post-body figure.code figcaption + pre { padding-top: 34px; }
 .post-body pre code { padding: 0; border: 0; background: none; font-size: inherit; color: inherit; white-space: pre; }
 .hljs-keyword, .hljs-built_in, .hljs-selector-tag, .hljs-literal, .hljs-type, .hljs-doctag { color: var(--gold-400); }
 .hljs-string, .hljs-regexp, .hljs-symbol, .hljs-addition, .hljs-template-tag { color: #9FD3B5; }
@@ -276,7 +277,9 @@ a.chip:hover { border-color: var(--accent-line); color: var(--fg); }
 .hljs-strong { font-weight: 600; }
 
 .table-wrap { margin: 1.6em 0; overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; }
-.post-body table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.5; }
+/* Size to content and scroll inside .table-wrap rather than squeezing words mid-hyphen. */
+.post-body table { width: max-content; min-width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.5; }
+.post-body td { max-width: 36ch; }
 .post-body th, .post-body td { padding: 10px 14px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
 .post-body th {
   background: var(--bg-sunken); color: var(--fg);
