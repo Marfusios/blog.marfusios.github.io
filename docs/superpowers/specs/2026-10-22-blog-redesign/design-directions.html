@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog design directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-900:#0B1A2E;--navy-800:#102439;--navy-700:#17314F;--navy-600:#20406A;--navy-500:#2F5A8E;--navy-300:#6B86A8;--navy-100:#C9D2DE;
+  --gold-700:#B8860D;--gold-600:#D4A017;--gold-500:#E8AE0D;--gold-400:#EFC149;--gold-200:#F7E2A0;--gold-50:#FBF5E3;
+  --paper:#FAF7F1;--paper-2:#F2EEE3;--paper-3:#E8E2D2;--ink-900:#0B1A2E;--ink-700:#2A3548;--ink-500:#5A6478;--ink-300:#8B94A6;
+  --display:"Fraunces",Georgia,serif;--sans:"Inter",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#E4E0D6;color:var(--ink-900);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.page{max-width:1440px;margin:0 auto;padding:40px 32px 120px}
+.intro h1{font-family:var(--display);font-weight:600;font-size:40px;letter-spacing:-.02em;margin:0 0 8px}
+.intro p{color:var(--ink-700);max-width:80ch;margin:0 0 6px;line-height:1.55}
+.intro .note{font-family:var(--mono);font-size:12px;color:var(--ink-500)}
+
+.option-block{margin-top:72px}
+.opt-head{display:flex;align-items:center;gap:18px;margin-bottom:20px;flex-wrap:wrap}
+.opt-letter{width:44px;height:44px;border-radius:12px;background:var(--navy-800);color:var(--gold-500);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:24px;font-weight:600}
+.opt-title h2{margin:0;font-family:var(--display);font-size:28px;font-weight:600;letter-spacing:-.02em}
+.opt-title p{margin:2px 0 0;color:var(--ink-700);font-size:15px;max-width:90ch}
+.pick{margin-left:auto;padding:10px 18px;border-radius:999px;border:1px solid var(--navy-800);background:transparent;font:600 14px var(--sans);color:var(--navy-800);cursor:pointer}
+.pick:hover{background:var(--navy-800);color:var(--paper)}
+.pick.selected,[data-choice].selected .pick{background:var(--gold-500);border-color:var(--gold-600);color:var(--navy-900)}
+.opt-why{display:flex;gap:28px;flex-wrap:wrap;margin:0 0 18px 62px;font-size:13.5px;color:var(--ink-700)}
+.opt-why b{color:var(--ink-900)}
+
+.duo{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:28px;align-items:start}
+.frame{border-radius:12px;overflow:hidden;box-shadow:0 18px 40px rgba(11,26,46,.16);background:var(--paper)}
+.bar{height:34px;background:#D9D4C8;display:flex;align-items:center;gap:7px;padding:0 14px}
+.bar i{width:11px;height:11px;border-radius:50%;background:#BFB8A8;display:block}
+.bar span{margin-left:14px;font:12px var(--mono);color:var(--ink-500);background:#ECE8DE;padding:3px 12px;border-radius:6px}
+.phone{width:360px;border-radius:34px;border:9px solid #13161B;overflow:hidden;background:var(--paper);box-shadow:0 18px 40px rgba(11,26,46,.2);height:760px;position:relative}
+.phone .scroll{height:100%;overflow:hidden}
+.cap{font:12px var(--mono);color:var(--ink-500);margin:10px 4px 0;text-align:center}
+
+/* ---------- shared bits ---------- */
+.mono{font-family:var(--mono)}
+.tag{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:500;border:1px solid var(--paper-3);color:var(--ink-700);background:var(--paper)}
+.tag.gold{border-color:rgba(212,160,23,.4);color:var(--gold-700);background:rgba(212,160,23,.06)}
+.tag.navy{border-color:rgba(23,49,79,.2);color:var(--navy-700);background:rgba(23,49,79,.04)}
+.code{background:var(--navy-900);color:#DCE3EC;font:12px/1.65 var(--mono);border-radius:10px;padding:14px 16px;margin:16px 0;overflow:hidden;white-space:pre}
+.code .k{color:var(--gold-400)}.code .s{color:#9FD3B5}.code .c{color:var(--navy-300)}.code .f{color:#9CC2F0}
+.pattern{position:absolute;inset:0;background:url('https://mkotas.cz/images/maze-pattern.png') repeat;opacity:.06;mix-blend-mode:overlay;pointer-events:none}
+.glow{position:absolute;inset:0;background:radial-gradient(circle at 85% 20%,rgba(232,174,13,.18),transparent 55%);pointer-events:none}
+
+/* =========================================================
+   A — COMPANION
+   ========================================================= */
+.A{background:var(--paper);font-size:15px}
+.A .head{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;border-bottom:1px solid var(--paper-3);background:rgba(250,247,241,.9)}
+.A .brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px}
+.A .brand img{width:30px;height:30px}
+.A .brand .slash{font-family:var(--mono);font-weight:500;font-size:13px;color:var(--gold-700)}
+.A nav{display:flex;gap:24px;align-items:center;font-size:14px;font-weight:500;color:var(--ink-700)}
+.A nav .rss{width:30px;height:30px;border:1px solid var(--paper-3);border-radius:8px;display:inline-flex;align-items:center;justify-content:center}
+.A .hero{position:relative;overflow:hidden;margin:16px 32px 0;border-radius:20px;background:var(--navy-800);color:var(--paper);padding:56px 52px}
+.A .eyebrow{display:flex;gap:10px;align-items:center;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-500);margin-bottom:18px}
+.A .eyebrow .sep{width:4px;height:4px;border-radius:50%;background:var(--gold-500);opacity:.6}
+.A .hero h1{position:relative;font-family:var(--display);font-weight:600;font-size:50px;line-height:1.05;letter-spacing:-.02em;margin:0 0 18px;max-width:16ch}
+.A .hero h1 em{color:var(--gold-500);font-weight:500}
+.A .hero p{position:relative;color:var(--navy-100);font-size:17px;line-height:1.6;max-width:56ch;margin:0 0 26px}
+.A .btns{position:relative;display:flex;gap:10px}
+.A .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;font-size:13.5px;font-weight:600}
+.A .btn.gold{background:var(--gold-500);color:var(--navy-900)}
+.A .btn.ghost{border:1px solid var(--navy-600);color:var(--navy-100)}
+.A .wrap{padding:44px 32px 8px}
+.A .sec-eyebrow{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-500);margin-bottom:14px}
+.A .featured{background:#fff;border:1px solid rgba(212,160,23,.35);box-shadow:0 6px 24px rgba(212,160,23,.10);border-radius:16px;padding:30px 32px;display:grid;grid-template-columns:1.5fr 1fr;gap:32px}
+.A .featured .label{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-700);display:flex;gap:8px;align-items:center;margin-bottom:12px}
+.A .pulse{width:6px;height:6px;border-radius:50%;background:var(--gold-600);box-shadow:0 0 0 4px rgba(212,160,23,.2)}
+.A .featured h2{font-family:var(--display);font-weight:600;font-size:30px;line-height:1.15;letter-spacing:-.02em;margin:0 0 12px}
+.A .featured p{color:var(--ink-700);line-height:1.6;margin:0 0 16px}
+.A .meta{font-family:var(--mono);font-size:11.5px;color:var(--ink-500);display:flex;gap:12px;align-items:center}
+.A .featured .thumb{border-radius:12px;background:var(--navy-800);position:relative;overflow:hidden;min-height:170px;display:flex;align-items:flex-end;padding:16px}
+.A .thumb .t{position:relative;font-family:var(--mono);font-size:11px;color:var(--gold-400)}
+.A .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.A .card{background:#fff;border:1px solid var(--paper-3);border-radius:14px;padding:22px;box-shadow:0 2px 6px rgba(11,26,46,.06);display:flex;flex-direction:column}
+.A .card .r1{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+.A .card .r1 .when{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--ink-500)}
+.A .card h3{font-family:var(--display);font-weight:600;font-size:20px;line-height:1.2;letter-spacing:-.02em;margin:0 0 8px}
+.A .card p{font-size:13.5px;color:var(--ink-700);line-height:1.55;margin:0 0 14px}
+.A .card .r3{margin-top:auto;display:flex;align-items:center;font-family:var(--mono);font-size:11px;color:var(--ink-500)}
+.A .card .r3 .arr{margin-left:auto;font-size:16px}
+.A .foot{display:flex;justify-content:space-between;align-items:center;margin:40px 32px 0;padding:26px 0 30px;border-top:1px solid var(--paper-3);font-size:12.5px;color:var(--ink-500)}
+.A .foot .l{display:flex;gap:12px;align-items:center}.A .foot img{width:30px}
+.A .foot .r{display:flex;gap:18px;color:var(--ink-700)}
+/* A article (phone) */
+.Aa{font-size:15px}
+.Aa .head{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-bottom:1px solid var(--paper-3)}
+.Aa .head .brand{display:flex;gap:8px;align-items:center;font-weight:600;font-size:13.5px}.Aa .head img{width:26px}
+.Aa .head .slash{font-family:var(--mono);font-size:12px;color:var(--gold-700)}
+.Aa .burger{width:20px;height:12px;border-top:2px solid var(--ink-700);border-bottom:2px solid var(--ink-700)}
+.Aa .body{padding:22px 20px}
+.Aa .crumb{display:flex;gap:6px;margin-bottom:14px}
+.Aa h1{font-family:var(--display);font-weight:600;font-size:29px;line-height:1.12;letter-spacing:-.02em;margin:0 0 14px}
+.Aa .by{display:flex;gap:10px;align-items:center;font-size:12px;color:var(--ink-500);padding-bottom:16px;border-bottom:1px solid var(--paper-3);margin-bottom:18px}
+.Aa .by img{width:30px;height:30px;border-radius:50%;filter:grayscale(1);border:2px solid var(--gold-600)}
+.Aa .by b{color:var(--ink-900);font-weight:600;display:block;font-size:12.5px}
+.Aa p{line-height:1.7;color:var(--ink-700);margin:0 0 14px}
+.Aa h2{font-family:var(--display);font-size:21px;font-weight:600;letter-spacing:-.02em;margin:22px 0 10px}
+
+/* =========================================================
+   B — EDITORIAL
+   ========================================================= */
+.B{background:var(--paper);font-size:15px}
+.B .head{display:flex;justify-content:space-between;align-items:center;padding:18px 44px}
+.B .brand{display:flex;gap:10px;align-items:center;font-size:14px;font-weight:600}
+.B .brand img{width:28px}
+.B .brand .sub{font-family:var(--display);font-style:italic;font-weight:400;color:var(--ink-500);font-size:15px}
+.B nav{display:flex;gap:26px;font-size:13.5px;color:var(--ink-700);font-weight:500}
+.B .mast{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:end;padding:44px 44px 30px;border-bottom:3px solid var(--ink-900);margin:0 44px;padding-left:0;padding-right:0}
+.B .mast h1{font-family:var(--display);font-weight:500;font-size:92px;line-height:.95;letter-spacing:-.035em;margin:0}
+.B .mast h1 em{color:var(--gold-700);font-weight:400}
+.B .mast p{margin:0 0 10px;color:var(--ink-700);line-height:1.6;font-size:15.5px}
+.B .mast .sub{font-family:var(--mono);font-size:11.5px;color:var(--ink-500);display:flex;gap:14px}
+.B .mast .sub a{border-bottom:1px solid var(--gold-600);color:var(--ink-900)}
+.B .topics{display:flex;gap:8px;padding:16px 0;margin:0 44px;border-bottom:1px solid var(--paper-3);align-items:center}
+.B .topics .lbl{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-500);margin-right:8px}
+.B .year{margin:34px 44px 0;display:flex;align-items:baseline;gap:16px}
+.B .year span{font-family:var(--display);font-size:44px;font-weight:600;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1px var(--ink-300)}
+.B .year i{flex:1;height:1px;background:var(--paper-3)}
+.B .row{display:grid;grid-template-columns:110px 1fr 190px;gap:28px;padding:22px 0;margin:0 44px;border-bottom:1px solid var(--paper-3);align-items:baseline}
+.B .row .d{font-family:var(--mono);font-size:12px;color:var(--ink-500)}
+.B .row h3{font-family:var(--display);font-weight:500;font-size:25px;line-height:1.2;letter-spacing:-.02em;margin:0 0 6px}
+.B .row p{margin:0;color:var(--ink-700);font-size:14.5px;line-height:1.55;max-width:62ch}
+.B .row .t{display:flex;flex-direction:column;gap:6px;align-items:flex-end;font-family:var(--mono);font-size:11px;color:var(--ink-500)}
+.B .row.lead h3{font-size:34px}
+.B .foot{margin-top:46px;background:var(--navy-800);color:var(--navy-100);padding:30px 44px;display:flex;justify-content:space-between;font-size:12.5px;position:relative;overflow:hidden}
+.B .foot b{color:var(--paper);font-family:var(--display);font-weight:600;font-size:17px;display:block;margin-bottom:4px}
+.B .foot .r{display:flex;gap:20px;align-items:flex-end;position:relative}
+/* B article */
+.Ba{font-size:15px}
+.Ba .head{display:flex;justify-content:space-between;align-items:center;padding:14px 20px}
+.Ba .head .brand{display:flex;gap:8px;align-items:center;font-size:13px;font-weight:600}.Ba .head img{width:24px}
+.Ba .head .sub{font-family:var(--display);font-style:italic;font-weight:400;color:var(--ink-500)}
+.Ba .burger{width:20px;height:12px;border-top:2px solid var(--ink-700);border-bottom:2px solid var(--ink-700)}
+.Ba .body{padding:18px 22px}
+.Ba .ey{font-family:var(--mono);font-size:11px;color:var(--gold-700);letter-spacing:.04em;margin-bottom:12px}
+.Ba h1{font-family:var(--display);font-weight:500;font-size:34px;line-height:1.05;letter-spacing:-.03em;margin:0 0 12px}
+.Ba .dek{font-family:var(--display);font-style:italic;font-size:17px;line-height:1.45;color:var(--ink-700);margin:0 0 16px}
+.Ba .by{font-family:var(--mono);font-size:11px;color:var(--ink-500);padding:10px 0;border-top:1px solid var(--ink-900);border-bottom:1px solid var(--paper-3);margin-bottom:18px}
+.Ba p{line-height:1.72;color:var(--ink-700);margin:0 0 14px}
+.Ba p.first::first-letter{font-family:var(--display);float:left;font-size:58px;line-height:.85;padding:6px 8px 0 0;color:var(--navy-800);font-weight:600}
+.Ba blockquote{margin:18px 0;padding:2px 0 2px 16px;border-left:3px solid var(--gold-600);font-family:var(--display);font-size:19px;line-height:1.35;color:var(--ink-900)}
+
+/* =========================================================
+   C — BUILD LOG
+   ========================================================= */
+.C{background:var(--paper);font-size:15px}
+.C .band{position:relative;overflow:hidden;background:var(--navy-800);color:var(--paper)}
+.C .head{position:relative;display:flex;justify-content:space-between;align-items:center;padding:16px 36px;border-bottom:1px solid var(--navy-700)}
+.C .brand{display:flex;gap:10px;align-items:center;font-weight:600;font-size:14.5px}.C .brand img{width:30px}
+.C .brand .slash{font-family:var(--mono);font-size:12.5px;color:var(--gold-500);font-weight:500}
+.C nav{display:flex;gap:24px;font-size:13.5px;color:var(--navy-100);font-weight:500}
+.C .hero{position:relative;padding:44px 36px 36px;display:grid;grid-template-columns:1fr 1.25fr;gap:40px;align-items:end}
+.C .hero .ey{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-500);margin-bottom:14px}
+.C .hero h1{font-family:var(--display);font-weight:600;font-size:52px;line-height:1.02;letter-spacing:-.02em;margin:0 0 14px}
+.C .hero h1 em{color:var(--gold-500);font-weight:500}
+.C .hero p{color:var(--navy-100);line-height:1.6;margin:0;font-size:15px}
+.C .now{display:grid;gap:10px}
+.C .now .lbl{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8FA2BD;display:flex;justify-content:space-between}
+.C .proj{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:14px 16px;border:1px solid var(--navy-600);border-radius:12px;background:rgba(255,255,255,.03)}
+.C .proj.on{border-color:rgba(232,174,13,.5);background:rgba(232,174,13,.06)}
+.C .proj .ic{width:34px;height:34px;border-radius:9px;background:var(--navy-700);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;color:var(--gold-400)}
+.C .proj b{display:block;font-size:14.5px;font-weight:600}
+.C .proj small{font-size:12px;color:#8FA2BD}
+.C .proj .st{font-family:var(--mono);font-size:11px;color:var(--gold-400);text-align:right}
+.C .proj .st span{display:block;color:#8FA2BD}
+.C .tabs{display:flex;gap:6px;padding:26px 36px 6px;flex-wrap:wrap}
+.C .tab{padding:7px 13px;border-radius:999px;border:1px solid var(--paper-3);font-size:12.5px;font-weight:500;color:var(--ink-700)}
+.C .tab.on{background:var(--navy-800);border-color:var(--navy-800);color:var(--paper)}
+.C .tab .n{font-family:var(--mono);font-size:10.5px;opacity:.6;margin-left:5px}
+.C .list{padding:10px 36px 0}
+.C .entry{display:grid;grid-template-columns:64px 1fr 150px;gap:22px;padding:20px 0;border-bottom:1px solid var(--paper-3);align-items:start}
+.C .entry .no{font-family:var(--mono);font-size:12px;color:var(--gold-700);padding-top:5px}
+.C .entry .top{display:flex;gap:8px;margin-bottom:8px}
+.C .entry h3{font-family:var(--display);font-weight:600;font-size:22px;line-height:1.2;letter-spacing:-.02em;margin:0 0 6px}
+.C .entry p{margin:0;font-size:14px;color:var(--ink-700);line-height:1.55;max-width:64ch}
+.C .entry .m{text-align:right;font-family:var(--mono);font-size:11px;color:var(--ink-500);line-height:1.8;padding-top:4px}
+.C .foot{display:flex;justify-content:space-between;padding:26px 36px 30px;margin-top:30px;border-top:1px solid var(--paper-3);font-size:12.5px;color:var(--ink-500)}
+.C .foot .r{display:flex;gap:18px;color:var(--ink-700)}
+/* C article */
+.Ca{font-size:15px}
+.Ca .band{background:var(--navy-800);color:var(--paper);position:relative;overflow:hidden}
+.Ca .head{position:relative;display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-bottom:1px solid var(--navy-700)}
+.Ca .head .brand{display:flex;gap:8px;align-items:center;font-size:13px;font-weight:600}.Ca .head img{width:24px}
+.Ca .head .slash{font-family:var(--mono);font-size:11.5px;color:var(--gold-500)}
+.Ca .burger{width:20px;height:12px;border-top:2px solid var(--navy-100);border-bottom:2px solid var(--navy-100)}
+.Ca .series{position:relative;padding:16px 18px 20px}
+.Ca .series .s1{font-family:var(--mono);font-size:11px;color:var(--gold-400);margin-bottom:8px;display:flex;justify-content:space-between}
+.Ca .dots{display:flex;gap:5px;margin-bottom:14px}.Ca .dots i{height:3px;flex:1;border-radius:2px;background:var(--navy-600)}.Ca .dots i.on{background:var(--gold-500)}
+.Ca h1{font-family:var(--display);font-weight:600;font-size:27px;line-height:1.12;letter-spacing:-.02em;margin:0 0 10px}
+.Ca .meta{font-family:var(--mono);font-size:11px;color:#8FA2BD}
+.Ca .body{padding:18px 20px}
+.Ca .tldr{background:#fff;border:1px solid var(--paper-3);border-left:3px solid var(--gold-600);border-radius:10px;padding:12px 14px;margin-bottom:16px}
+.Ca .tldr b{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-700);display:block;margin-bottom:6px}
+.Ca .tldr ul{margin:0;padding-left:16px;font-size:13.5px;line-height:1.55;color:var(--ink-700)}
+.Ca p{line-height:1.7;color:var(--ink-700);margin:0 0 14px}
+.Ca h2{font-family:var(--display);font-size:20px;font-weight:600;letter-spacing:-.02em;margin:20px 0 10px}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="intro">
+    <h1>blog.mkotas.cz: three directions</h1>
+    <p>All three use the mkotas.cz design system as-is: navy + gold on warm paper, Fraunces headlines, Inter body, JetBrains Mono for dates and metadata. What changes is <b>layout, tone and how posts are organised</b>. Each shows the home page (desktop) and an article (phone).</p>
+    <p class="note">Post titles here are sample content, apart from the two older posts you already have. Click "Pick" on the one you like, or mix and match in the terminal.</p>
+  </div>
+
+  <!-- ===================================================== A -->
+  <div class="option-block">
+    <div class="opt-head">
+      <div class="opt-letter">A</div>
+      <div class="opt-title">
+        <h2>Companion</h2>
+        <p>A sibling of mkotas.cz: same header, the rounded navy hero card, white post cards. Moving between the two sites feels like one place.</p>
+      </div>
+      <button class="pick" data-choice="a" onclick="document.querySelectorAll('.pick').forEach(b=>b.classList.remove('selected'));this.classList.add('selected')">Pick A</button>
+    </div>
+    <div class="opt-why"><span><b>Best at:</b> brand continuity, looks good with few posts</span><span><b>Trade-off:</b> card grids get long and less scannable once there are 30+ posts</span></div>
+    <div class="duo">
+      <div class="frame">
+        <div class="bar"><i></i><i></i><i></i><span>blog.mkotas.cz</span></div>
+        <div class="A">
+          <div class="head">
+            <div class="brand"><img src="https://mkotas.cz/images/logo.png" alt=""> Mariusz Kotas <span class="slash">/ blog</span></div>
+            <nav><span>Posts</span><span>Topics</span><span>mkotas.cz ↗</span><span class="rss"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg></span></nav>
+          </div>
+          <div class="hero">
+            <div class="pattern"></div><div class="glow"></div>
+            <div class="eyebrow" style="position:relative"><span>Blog</span><span class="sep"></span><span>Build notes</span><span class="sep"></span><span>Prague, CZ</span></div>
+            <h1>Notes from building <em>AI&nbsp;apps</em>.</h1>
+            <p>Design docs, dead ends and what actually shipped: retrieval, agents and applied ML, written while I build them.</p>
+            <div class="btns"><span class="btn gold">Subscribe via RSS</span><span class="btn ghost">About me ↗</span></div>
+          </div>
+          <div class="wrap">
+            <div class="sec-eyebrow">Latest</div>
+            <div class="featured">
+              <div>
+                <div class="label"><span class="pulse"></span> New post</div>
+                <h2>Building Aviation Casebook: RAG over 40 years of accident reports</h2>
+                <p>Why I picked aviation investigations as the first AI app, how the corpus is chunked, and the evaluation plan before a single line of app code.</p>
+                <div class="meta"><span class="tag gold">AI apps</span><span class="tag">RAG</span><span>22 Oct 2026 · 9 min</span></div>
+              </div>
+              <div class="thumb"><div class="pattern"></div><div class="glow"></div><span class="t">apps/aviation-investigations</span></div>
+            </div>
+            <div class="grid">
+              <div class="card"><div class="r1"><span class="tag gold">AI apps</span><span class="when">14 Oct 2026</span></div><h3>Tracing every LLM call with Langfuse</h3><p>Spans, scores and datasets: the observability setup I want before the first user.</p><div class="r3">7 min read<span class="arr">↗</span></div></div>
+              <div class="card"><div class="r1"><span class="tag navy">Architecture</span><span class="when">02 Oct 2026</span></div><h3>One repo, many independent AI apps</h3><p>No shared runtime, no forced framework: why each app owns its own stack.</p><div class="r3">5 min read<span class="arr">↗</span></div></div>
+              <div class="card"><div class="r1"><span class="tag">Freelance</span><span class="when">13 Feb 2020</span></div><h3>Hourly billing is nuts</h3><p>I don't sell my time, but my experience, knowledge and the quality of what I deliver.</p><div class="r3">4 min read<span class="arr">↗</span></div></div>
+              <div class="card"><div class="r1"><span class="tag navy">Architecture</span><span class="when">10 Jun 2016</span></div><h3>Coding suggestions</h3><p>SRP, DRY, CQS and friends: how I keep code clean and maintainable.</p><div class="r3">3 min read<span class="arr">↗</span></div></div>
+            </div>
+          </div>
+          <div class="foot"><div class="l"><img src="https://mkotas.cz/images/logo.png" alt=""><div><b style="color:var(--ink-900)">Mariusz Kotas</b><div class="mono" style="font-size:11px">blog.mkotas.cz · RSS</div></div></div><div class="r"><span>mkotas.cz ↗</span><span>GitHub ↗</span><span>LinkedIn ↗</span><span>Medium ↗</span></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="phone"><div class="scroll Aa">
+          <div class="head"><div class="brand"><img src="https://mkotas.cz/images/logo.png" alt="">Mariusz Kotas <span class="slash">/ blog</span></div><div class="burger"></div></div>
+          <div class="body">
+            <div class="crumb"><span class="tag gold">AI apps</span><span class="tag">RAG</span></div>
+            <h1>Building Aviation Casebook: RAG over 40 years of accident reports</h1>
+            <div class="by"><img src="https://mkotas.cz/images/head.png" alt=""><div><b>Mariusz Kotas</b>22 Oct 2026 · 9 min read</div></div>
+            <p>Accident reports are a near-perfect retrieval corpus: long, structured, written by experts, and full of exact facts that a model must not invent.</p>
+            <h2>Chunking by section</h2>
+            <p>Each report already has findings, probable cause and recommendations, so those become the chunk boundaries.</p>
+            <div class="code"><span class="k">def</span> <span class="f">chunk</span>(report):
+  <span class="c"># one chunk per section</span>
+  <span class="k">for</span> s <span class="k">in</span> report.sections:
+    <span class="k">yield</span> Chunk(s.title, s.text)</div>
+          </div>
+        </div></div>
+        <div class="cap">article · phone</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================== B -->
+  <div class="option-block">
+    <div class="opt-head">
+      <div class="opt-letter">B</div>
+      <div class="opt-title">
+        <h2>Editorial</h2>
+        <p>Reading first. A big typographic masthead, posts as a dated index grouped by year, hairline rules. Navy kept for code and the footer band. Feels like a well-set journal.</p>
+      </div>
+      <button class="pick" data-choice="b" onclick="document.querySelectorAll('.pick').forEach(b=>b.classList.remove('selected'));this.classList.add('selected')">Pick B</button>
+    </div>
+    <div class="opt-why"><span><b>Best at:</b> long-form reading, scales to hundreds of posts, calm and fast</span><span><b>Trade-off:</b> less visual punch; relies on good titles and excerpts</span></div>
+    <div class="duo">
+      <div class="frame">
+        <div class="bar"><i></i><i></i><i></i><span>blog.mkotas.cz</span></div>
+        <div class="B">
+          <div class="head">
+            <div class="brand"><img src="https://mkotas.cz/images/logo.png" alt=""> Mariusz Kotas <span class="sub">· notes</span></div>
+            <nav><span>Archive</span><span>Topics</span><span>About ↗</span><span>RSS</span></nav>
+          </div>
+          <div class="mast">
+            <h1>Build <em>notes</em>.</h1>
+            <div>
+              <p>I&rsquo;m building a series of independent AI apps (retrieval, agents, applied ML) and writing up the design, the mistakes and the numbers as I go.</p>
+              <div class="sub"><a>Subscribe via RSS</a><span>12 posts · since 2016</span></div>
+            </div>
+          </div>
+          <div class="topics"><span class="lbl">Topics</span><span class="tag gold">AI apps</span><span class="tag">RAG</span><span class="tag">Agents</span><span class="tag">Observability</span><span class="tag">Architecture</span><span class="tag">Freelance</span></div>
+          <div class="year"><span>2026</span><i></i></div>
+          <div class="row lead"><div class="d">22 Oct</div><div><h3>Building Aviation Casebook: RAG over 40 years of accident reports</h3><p>Why aviation investigations are the first AI app, how the corpus is chunked, and the evaluation plan before any app code.</p></div><div class="t"><span class="tag gold">AI apps</span><span>9 min</span></div></div>
+          <div class="row"><div class="d">14 Oct</div><div><h3>Tracing every LLM call with Langfuse</h3><p>Spans, scores and datasets: the observability setup I want before the first user.</p></div><div class="t"><span class="tag">Observability</span><span>7 min</span></div></div>
+          <div class="row"><div class="d">02 Oct</div><div><h3>One repo, many independent AI apps</h3><p>No shared runtime, no forced framework: why each app owns its own stack.</p></div><div class="t"><span class="tag">Architecture</span><span>5 min</span></div></div>
+          <div class="year"><span>2020</span><i></i></div>
+          <div class="row"><div class="d">13 Feb</div><div><h3>Hourly billing is nuts</h3><p>I don&rsquo;t sell my time, but my experience, knowledge and the quality of what I deliver.</p></div><div class="t"><span class="tag">Freelance</span><span>4 min</span></div></div>
+          <div class="foot"><div class="pattern"></div><div style="position:relative"><b>Mariusz Kotas</b>Product builder · Prague · m@mkotas.cz</div><div class="r"><span>mkotas.cz ↗</span><span>GitHub ↗</span><span>LinkedIn ↗</span><span>Medium ↗</span></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="phone"><div class="scroll Ba">
+          <div class="head"><div class="brand"><img src="https://mkotas.cz/images/logo.png" alt="">Mariusz Kotas <span class="sub">· notes</span></div><div class="burger"></div></div>
+          <div class="body">
+            <div class="ey">AI APPS · RAG · 9 MIN</div>
+            <h1>Building Aviation Casebook</h1>
+            <p class="dek">RAG over 40 years of accident reports, and why that corpus is a near-perfect test.</p>
+            <div class="by">22 OCT 2026 · MARIUSZ KOTAS</div>
+            <p class="first">Accident reports are a near-perfect retrieval corpus: long, structured, written by experts, and full of exact facts a model must not invent.</p>
+            <blockquote>If the answer can&rsquo;t cite the paragraph, it isn&rsquo;t an answer.</blockquote>
+            <p>Each report already has findings, probable cause and recommendations, so those become the chunk boundaries.</p>
+            <div class="code"><span class="k">for</span> s <span class="k">in</span> report.sections:
+  <span class="k">yield</span> Chunk(s.title, s.text)</div>
+          </div>
+        </div></div>
+        <div class="cap">article · phone</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================== C -->
+  <div class="option-block">
+    <div class="opt-head">
+      <div class="opt-letter">C</div>
+      <div class="opt-title">
+        <h2>Build log</h2>
+        <p>Organised around the apps. A navy band (like the Experience section) with "now building" projects, numbered log entries, filter by app, and series navigation inside posts.</p>
+      </div>
+      <button class="pick" data-choice="c" onclick="document.querySelectorAll('.pick').forEach(b=>b.classList.remove('selected'));this.classList.add('selected')">Pick C</button>
+    </div>
+    <div class="opt-why"><span><b>Best at:</b> following one app from idea to launch, multi-part series, a "work in public" feel</span><span><b>Trade-off:</b> more structure to keep up (project status, series order) each time you post</span></div>
+    <div class="duo">
+      <div class="frame">
+        <div class="bar"><i></i><i></i><i></i><span>blog.mkotas.cz</span></div>
+        <div class="C">
+          <div class="band">
+            <div class="pattern"></div><div class="glow"></div>
+            <div class="head"><div class="brand"><img src="https://mkotas.cz/images/logo.png" alt=""> Mariusz Kotas <span class="slash">/ build log</span></div><nav><span>Log</span><span>Projects</span><span>mkotas.cz ↗</span><span>RSS</span></nav></div>
+            <div class="hero">
+              <div>
+                <div class="ey">Building in public</div>
+                <h1>The <em>build log</em>.</h1>
+                <p>Every AI app I build gets written up here, from the first design doc to the post-launch numbers.</p>
+              </div>
+              <div class="now">
+                <div class="lbl"><span>Now building</span><span>2 apps</span></div>
+                <div class="proj on"><div class="ic">01</div><div><b>Aviation Casebook</b><small>RAG over accident investigation reports</small></div><div class="st">In design<span>3 posts</span></div></div>
+                <div class="proj"><div class="ic">02</div><div><b>Next app</b><small>Agents · coming soon</small></div><div class="st">Planned<span>0 posts</span></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="tabs"><span class="tab on">All<span class="n">12</span></span><span class="tab">Aviation Casebook<span class="n">3</span></span><span class="tab">Agents<span class="n">2</span></span><span class="tab">Trading &amp; ML<span class="n">3</span></span><span class="tab">Archive<span class="n">4</span></span></div>
+          <div class="list">
+            <div class="entry"><div class="no">#012</div><div><div class="top"><span class="tag gold">Aviation Casebook · 2/5</span></div><h3>Chunking 40 years of accident reports</h3><p>Section-aware chunking, why fixed windows failed, and the retrieval eval that decided it.</p></div><div class="m">22 Oct 2026<br>9 min</div></div>
+            <div class="entry"><div class="no">#011</div><div><div class="top"><span class="tag gold">Aviation Casebook · 1/5</span></div><h3>Why aviation investigations are my first AI app</h3><p>A corpus that punishes hallucination, and the evaluation plan before any app code.</p></div><div class="m">14 Oct 2026<br>6 min</div></div>
+            <div class="entry"><div class="no">#010</div><div><div class="top"><span class="tag navy">Architecture</span></div><h3>One repo, many independent AI apps</h3><p>No shared runtime, no forced framework: why each app owns its own stack.</p></div><div class="m">02 Oct 2026<br>5 min</div></div>
+          </div>
+          <div class="foot"><span>© 2026 Mariusz Kotas · blog.mkotas.cz</span><div class="r"><span>mkotas.cz ↗</span><span>GitHub ↗</span><span>LinkedIn ↗</span><span>Medium ↗</span></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="phone"><div class="scroll Ca">
+          <div class="band"><div class="pattern"></div>
+            <div class="head"><div class="brand"><img src="https://mkotas.cz/images/logo.png" alt="">MK <span class="slash">/ build log</span></div><div class="burger"></div></div>
+            <div class="series">
+              <div class="s1"><span>AVIATION CASEBOOK</span><span>PART 2 OF 5</span></div>
+              <div class="dots"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div>
+              <h1>Chunking 40 years of accident reports</h1>
+              <div class="meta">#012 · 22 OCT 2026 · 9 MIN</div>
+            </div>
+          </div>
+          <div class="body">
+            <div class="tldr"><b>TL;DR</b><ul><li>Fixed 512-token windows lost the probable cause half the time</li><li>Section-aware chunks fixed recall</li><li>Eval set: 120 hand-written questions</li></ul></div>
+            <p>Each report already has findings, probable cause and recommendations, so those become the chunk boundaries.</p>
+            <h2>What failed first</h2>
+            <div class="code"><span class="k">for</span> s <span class="k">in</span> report.sections:
+  <span class="k">yield</span> Chunk(s.title, s.text)</div>
+          </div>
+        </div></div>
+        <div class="cap">article · phone</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
